@@ -1,0 +1,49 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 130%;
+  height: 100%;
+}
+
+footer {
+  bottom: 0;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+}
+
+section {
+  height: 100%;
+  position: relative;
+}
+
+article:after,
+article:before {
+  content: " ";
+  display: table;
+}
+article:after {
+  clear: both;
+}
+
+
+pre code {
+  display: block;
+  margin: 0 auto;
+  max-width: 60em;
+}
+pre {
+  border-radius: 0 !important;
+}
+
+.token.operator {
+  background: transparent;
+}
+
+.menu {
+  display: none;
+}
+
