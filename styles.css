@@ -3,11 +3,6 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-size: 130%;
-  height: 100%;
-}
-
 footer {
   bottom: 0;
   padding: 1em;
@@ -15,8 +10,20 @@ footer {
   right: 0;
 }
 
+h1 + h2 {
+  font-weight: 100;
+}
+
+html, body {
+  font-size: 130%;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 60em;
+}
+
 section {
   height: 100%;
+  overflow: scroll;
   position: relative;
 }
 
