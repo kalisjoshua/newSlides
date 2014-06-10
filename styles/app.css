@@ -21,6 +21,10 @@ html, body {
   max-width: 60em;
 }
 
+img {
+  max-width: 100%;
+}
+
 section {
   height: 100%;
   overflow: scroll;
@@ -54,3 +58,11 @@ pre {
   display: none;
 }
 
+table th,
+table td {
+  border: 1px solid #DDDDDD;
+  padding: .25em 1em;
+}
+table tr:nth-of-type(2n) {
+  background: #EEEEEE;
+}
