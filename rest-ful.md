@@ -1,13 +1,19 @@
 REST
 ====
 
-Relax.
+Relax. You can do it.
 
 ---
 
 # What is REST and why do I care?
 
 If you are building anything on HTTP, you're (probably) doing it wrong.
+
+---
+
+# But That's OK...
+
+Because we all are, and we can all do better.
 
 ---
 
@@ -125,7 +131,7 @@ GET /people/kalisjoshua HTTP/1.1
 
 ### Response
 
-````json
+````
 HTTP/1.1 200 OK
 <headers>
 
@@ -156,15 +162,20 @@ When building RESTful HTTP APIs most work will be done within the `path` and `qu
 
 ## HTTP Verbs
 
-Verb   | Action
------- | ------
-POST   | Create
-GET    | Read
-PUT    | Update
-DELETE | Delete
-OPTION |
-HEAD   |
-PATCH  |
+Verb    | Action | Idempotent | Side-effects
+------- | ------ | ---------- | ------------
+POST    | Create | no         | yes
+GET     | Read   | yes        | no
+PUT     | Update | yes        | yes
+DELETE  | Delete | yes        | yes
+OPTION* |||
+HEAD*   |||
+PATCH*  |||
+
+  - **Idempotent** - repeating a request will not continually change the system
+  - **Side-effects** - changes will occur as a result of the request
+
+\* *Left as an exercise for the brave and over-achieving.*
 
 ---
 
@@ -182,14 +193,112 @@ PATCH  |
     + Don't filter properties in the URI; use a query to filter
     + Don't nest the URIs to match the data modeling; move resources closest to root as possible
 
---- NOTES
+---
 
-  1. Evaluate business process
-  2. Define media types
+# Do You Want To Design A Good API?
 
 ---
 
-## Resources
+## Do These Things First
+
+  1. Evaluate business process*
+  2. Identify objects (Resource) that need be represented in the API
+  3. Define Verbs for each Resource
+
+\* *We are not going to cover this here.*
+
+---
+
+## Plan
+
+Resource   | POST   | GET    | PUT    | DELETE
+---------- | ------ | ------ | ------ | ------
+/cats      | Create a new cat resource | Retrieve a list of all Cats | Update the list of all Cats | Empty the list of all Cats
+/cats/{id} | error | Retrieve Cat information | Update info about a specific Cat | Remove the Cat from the list of all Cats
+/dogs      | Create a new dog resource | Retrieve a list of all Dogs | Update the list of all Dogs | Empty the list of all Dogs
+/dogs/{id} | error | Retrieve Dog information | Update info about a specific Dog | Remove the Dog from the list of all Dogs
+/pets      | error | Retrieve a list of all Pets | error | Empty the list of all Pets
+/pets/{id} | error | Retrieve Pet information| error | Remove the Pet from the list of all Pets
+
+---
+
+## Best Practices
+
+  - Use pluralized URIs
+  - Model Resources as close to root of API as possible (makes sense for the domain)
+  - Be consistent across all Resources
+
+---
+
+# Why Follow Best Practices?
+
+---
+
+## Library (Helper) - [AngularJS](https://docs.angularjs.org/api/ngResource/service/$resource)
+
+````javascript
+angular.module('app')
+  .service('API', function ($resource) {
+    
+    return {
+        Dogs: $resoure('/dogs')
+      };
+  });
+
+angular.module('app')
+  .controller('MainCtrl', function (API) {
+    API.Dogs
+      .get(function (data) {
+        // Do something with data
+      });
+
+    API.Dogs
+      .save({
+        // New Dog representation saved to collection
+      });
+  });
+````
+
+---
+
+## Library - [Fermata](https://github.com/natevw/fermata)
+
+````javascript
+var api = fermata.json('http://example.com'),
+    Dogs = api.dogs;
+
+Dogs.get(function (err, data) {
+  // data is a JavaScript object
+});
+
+Dogs.post({/* data */}, function (err, result) {
+  // report success or failure
+});
+````
+
+---
+
+## Other Good Reasons
+
+  - Be part of a community
+  - Help others; outside your immediate team
+  - Get help from others; outside your immediate team
+  - Benefit from the mistakes of other people; stand on the shoulders of giants
+
+---
+
+# Look like a genius
+
+---
+
+## Thank You
+
+### Joshua T Kalis
+
+  - [twitter](//twitter.com/kalisjoshua)
+  - [github](//github.com/kalisjoshua)
+
+### Resources
 
   - http://en.wikipedia.org/wiki/Representational_state_transfer
   - http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http

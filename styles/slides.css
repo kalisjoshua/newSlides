@@ -4,8 +4,8 @@
   padding: 0 1em;
 }
 
-.slide--content code,
-.slide--content pre {
+code,
+pre {
   background: gainsboro;
   background: rgba(0, 0, 0, .1);
   border: 1px solid rgba(0, 0, 0, .3);
@@ -19,7 +19,7 @@
   font-weight: 100;
 }
 
-.slide--content pre code {
+pre code {
   background: transparent;
   border: 0;
 }

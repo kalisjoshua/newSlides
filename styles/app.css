@@ -3,6 +3,14 @@
   box-sizing: border-box;
 }
 
+a {
+  color: maroon;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 footer {
   bottom: 0;
   padding: 1em;
