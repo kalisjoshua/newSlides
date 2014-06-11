@@ -5,23 +5,29 @@ Relax. You can do it.
 
 ---
 
-# If you think your API is RESTful...
+# The REST You Know
 
 ---
 
-... you're (probably) wrong...
+... is (probably) wrong.
 
 ---
 
-# ... but that's OK.
+# But That's OK.
 
-Because we all are, and we can be better.
+We're all in the same boat, so you're not alone.
 
 ---
 
-# Ready?
+# Ready to get better?
 
 [Audience participation]
+
+---
+
+# I wont do that again.
+
+Promise.
 
 ---
 
@@ -54,7 +60,7 @@ Here's what we are gonna cover.
 
 ---
 
-## What is REST is not?
+## What REST is not?
 
   - URIs without file extensions
     + http://example.com/index vs. http://example.com/index.html
@@ -106,10 +112,6 @@ Think application state; not resources.
 
 ---
 
-![](http://www.delish.com/cm/delish/images/FY/frosted-flakes-tony-tiger-del0311-lg.jpg)
-
----
-
 ![](http://www.qasinternational.com.au/wp-content/uploads/2013/09/pirate2.jpg)
 
 ---
@@ -133,6 +135,14 @@ By 'realized' I mean what most people acually do, or work towards as an ideal.
 
 ---
 
+# RRRRRRRRRRRRRRREST
+
+---
+
+![](http://www.delish.com/cm/delish/images/FY/frosted-flakes-tony-tiger-del0311-lg.jpg)
+
+---
+
 # A Rose by Another Name
 
 ## Pragmatic REST
@@ -140,6 +150,12 @@ By 'realized' I mean what most people acually do, or work towards as an ideal.
 ---
 
 ## Sample
+
+A mythical API provides the Resource endpoint:
+
+````
+http://example.com/people/:id
+````
 
 ### Request
 
@@ -168,18 +184,18 @@ HTTP/1.1 200 OK
 <scheme>://<host>:<port>/<path>?<search>#<fragment>
 ````
 
-### Breakdown
-
 **http://example.com:80/path-to/resource?filter=active#anchor**
 
-URI piece    | value
------------- | -----
-**scheme**   | http or [https, ftp, etc.]
-**port**     | 80 (80 is default; assumed if nothing is provided)
-**host**     | example.com
-**path**     | /path-to/resource
-**search**   | ?filter=active
-**fragment** | #anchor - references an [id, name] in the page*
+### Breakdown
+
+URI piece | value
+--------- | -----
+scheme    | http or [https, ftp, etc.]
+port      | 80 (80 is default; assumed if nothing is provided)
+host      | example.com
+path      | /path-to/resource
+search    | ?filter=active
+fragment  | #anchor - references an [id, name] in the page*
 
 \* *Generally used by the browser to scroll to that element as a accessibility feature.*
 
@@ -191,14 +207,14 @@ URI piece    | value
 <scheme>://<host>:<port>/<path>?<search>#<fragment>
 ````
 
-When building RESTful HTTP APIs most work will be done within the `path` and `query` portions and don't need to be concerned with the other parts of the URL.
-
   - The `path` should identify a resource
     + A collection of objects
     + A single object with a unique identity
   - The `query` should filter or refine what is addressed by the `path`
     + Filtering a list of object based on a criteria
     + Returning only a subset of properties on a resource
+
+RESTful HTTP APIs will be concerned with the `path` and `query` portions of the URI.
 
 ---
 
@@ -225,7 +241,9 @@ PATCH*  |||
 
 ---
 
-## BAD Examples - Don't Do These
+## BAD Examples
+
+Don't do the following:
 
   1. `/v3/json/GetUser/1234` or `/v3/GetUser/1234.json`
     + Don't put the media type in the URI; put it in the request (accept) headers
@@ -235,9 +253,15 @@ PATCH*  |||
     + Don't filter properties in the URI; use a query to filter
     + Don't nest the URIs to match the data modeling; move resources closest to root as possible
 
+*The APIs that offer these endpoints are not RESTful.*
+
 ---
 
 # Do You Want To Design A Good API?
+
+---
+
+# You Want To Design A Good API.
 
 ---
 
@@ -266,9 +290,15 @@ Resource   | POST   | GET    | PUT    | DELETE
 
 ## Best Practices
 
-  - Use pluralized URIs
-  - Model Resources as close to root of API as possible (makes sense for the domain)
-  - Be consistent across all Resources
+  - Use pluralized Resource endpoints
+    + Dogs
+    + Cats
+    + Persons or People?
+  - Use singular-ized nouns for namespaces
+  - Model Resources as close to root of the API as:
+    + Possible
+    + Makes sense for the domain
+  - Be **consistent** across all Resources
 
 ---
 
@@ -320,12 +350,30 @@ Dogs.post({/* data */}, function (err, result) {
 
 ---
 
-## Other Good Reasons
+## Good Reasons
 
   - Be part of a community
   - Help others; outside your immediate team
   - Get help from others; outside your immediate team
   - Benefit from the mistakes of other people; stand on the shoulders of giants
+
+---
+
+## Better Reasons
+
+  - Performance
+  - Scalability
+  - Simplicity
+  - Modifiability
+  - Visibility
+  - Portability
+  - Reliability
+
+All of the above are achievable with REST if employed correctly and consistently.
+
+---
+
+# And the best reason...
 
 ---
 
@@ -344,3 +392,5 @@ Dogs.post({/* data */}, function (err, result) {
 
   - http://en.wikipedia.org/wiki/Representational_state_transfer
   - http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http
+  - http://nicksda.apotomo.de/2010/10/rails-misapprehensions-crud-is-not-rest
+  - http://kellabyte.com/2011/09/04/clarifying-rest/
