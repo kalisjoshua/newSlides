@@ -1,5 +1,6 @@
 (function () {
-  var slideClasses,
+  var currentSlide,
+      slideClasses,
       slideCount;
 
   slideClasses = {
@@ -19,16 +20,14 @@
   }
 
   function navigate(change, event) {
-    var slideNumber;
+    event.preventDefault();
 
-    slideNumber = change + ~~(window.location.hash || '#0').slice(1);
-
-    slideNumber = Math.max(0, Math.min(slideNumber, slideCount - 1));
-
-    window.location.hash = slideNumber;
+    window.location.hash = currentSlide = Math.max(0, Math.min(change + currentSlide, slideCount - 1));
   }
 
   function ready() {
+    currentSlide = ~~(window.location.hash || '#0').slice(1);
+
     if (document.location.search) {
       loadDeck();
     } else {
@@ -44,7 +43,7 @@
 
     document.body.innerHTML = marked(src)
       .split('<hr>')
-      .map(function (content, indx) {
+      .map(function (content, indx, all) {
         var slide;
 
         slide = slideTemplate
@@ -58,7 +57,7 @@
 
           slide
             .find('footer')
-            .html(indx);
+            .html(indx + ' of ' + all.length);
 
           slide
             .addClass(slideClassLookup(slide));
@@ -83,23 +82,41 @@
   }
 
   function slideClassLookup(slide) {
-    var title;
+    var children,
+        title;
 
-    title = slide
+    children = slide
       .children('article')
-      .children()[0]
+      .children();
+      
+    title = children[0]
       .nodeName
       .toLowerCase();
 
-    return slideClasses[title];
+    return children.length === 1 ? slideClasses.h1 : slideClasses[title];
   }
 
   $(document)
-    .on('keyup', function (event) {
-      if (event.keyCode === 39 || event.keyCode === 37) {
-        navigate(event.keyCode - 38, event);
+    .on('keydown', function (event) {
+      var delta,
+          moveLR,
+          moveUD;
+
+      // arrow keys - left and right
+      moveLR = event.keyCode - 38;
+
+      // arrow keys - up and down
+      moveUD = event.keyCode - 39;
+
+      if (Math.abs(moveLR) === 1 || Math.abs(moveUD) === 1) {
+        delta = Math.abs(moveLR) === 1 ? moveLR : !~moveUD ? -currentSlide : (slideCount - 1 - currentSlide);
+        navigate(delta, event);
       }
     });
+
+  window.onhashchange = function () {
+    currentSlide = ~~(window.location.hash || '#0').slice(1);
+  };
 
   $(ready);
 }());

@@ -5,19 +5,33 @@ Relax. You can do it.
 
 ---
 
+# If you think your API is RESTful...
+
+---
+
+... you're (probably) wrong...
+
+---
+
+# ... but that's OK.
+
+Because we all are, and we can be better.
+
+---
+
+# Ready?
+
+[Audience participation]
+
+---
+
 # What is REST and why do I care?
 
-If you are building anything on HTTP, you're (probably) doing it wrong.
-
 ---
 
-# But That's OK...
+## Adjenda
 
-Because we all are, and we can all do better.
-
----
-
-### What are we gonna cover?
+Here's what we are gonna cover.
 
   - What is REST
     + Definition
@@ -25,6 +39,7 @@ Because we all are, and we can all do better.
   - Examples
     + A simple object collection
     + Less-obvious event modeling
+  - Why does anyone care?
 
 ---
 
@@ -32,8 +47,8 @@ Because we all are, and we can all do better.
 
   - **REST** - REpresentation State Transfer
   - An architectural style
-  - REST is not HTTP
-  - HTTP exhibits REST
+  - REST is not HTTP, but HTTP does exhibit REST
+
 
   > "The World Wide Web represents the largest implementation of a system conforming to the REST architectural style." ~ [wikipedia](http://en.wikipedia.org/wiki/REST)
 
@@ -45,7 +60,7 @@ Because we all are, and we can all do better.
     + http://example.com/index vs. http://example.com/index.html
   - SEO-friendly URIs
     + http://example.com/user-settings vs. http://example.com/User/Settings
-  - Task-based URIs
+  - Task-based URIs responding only to POST
     + http://example.com/GetUserData
     + http://example.com/SaveUserData
     + http://example.com/UpdateUserData
@@ -75,11 +90,11 @@ REST is supposed to mean HyperMedia.
 
 # But...
 
-... we - the developers of the internet at large - have not used the word that way.
+REST has been done wrong for so long now that it has come to mean something different.
 
 ---
 
-# HyperMedia is Hard.
+# HyperMedia is Hard(er).
 
 Think application state; not resources.
 
@@ -91,11 +106,15 @@ Think application state; not resources.
 
 ---
 
+![](http://www.delish.com/cm/delish/images/FY/frosted-flakes-tony-tiger-del0311-lg.jpg)
+
+---
+
 ![](http://www.qasinternational.com.au/wp-content/uploads/2013/09/pirate2.jpg)
 
 ---
 
-# Ummm.
+# Yes...
 
 I made that up.
 
@@ -146,7 +165,30 @@ HTTP/1.1 200 OK
 ## Some Basics - URIs
 
 ````
-<scheme>://<host>:<port>/<path>?<query>#<fragment>
+<scheme>://<host>:<port>/<path>?<search>#<fragment>
+````
+
+### Breakdown
+
+**http://example.com:80/path-to/resource?filter=active#anchor**
+
+URI piece    | value
+------------ | -----
+**scheme**   | http or [https, ftp, etc.]
+**port**     | 80 (80 is default; assumed if nothing is provided)
+**host**     | example.com
+**path**     | /path-to/resource
+**search**   | ?filter=active
+**fragment** | #anchor - references an [id, name] in the page*
+
+\* *Generally used by the browser to scroll to that element as a accessibility feature.*
+
+---
+
+## URIs
+
+````
+<scheme>://<host>:<port>/<path>?<search>#<fragment>
 ````
 
 When building RESTful HTTP APIs most work will be done within the `path` and `query` portions and don't need to be concerned with the other parts of the URL.
@@ -230,7 +272,7 @@ Resource   | POST   | GET    | PUT    | DELETE
 
 ---
 
-# Why Follow Best Practices?
+# Why Does Anyone Care?
 
 ---
 

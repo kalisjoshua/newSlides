@@ -29,6 +29,10 @@ html, body {
   max-width: 60em;
 }
 
+html {
+  background: rgba(250, 250, 155, 0.2);
+}
+
 img {
   max-width: 100%;
 }
