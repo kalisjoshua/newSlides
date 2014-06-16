@@ -18,6 +18,10 @@ footer {
   right: 0;
 }
 
+footer:before {
+  content: "Slide ";
+}
+
 h1 + h2 {
   font-weight: 100;
 }
@@ -30,7 +34,6 @@ html, body {
 }
 
 html {
-  background: rgba(255, 255, 155, 0.2);
 }
 
 img {

@@ -336,8 +336,10 @@ All of the above are achievable with REST if employed correctly and consistently
 
 ### Joshua T Kalis
 
-  - [twitter](//twitter.com/kalisjoshua)
-  - [github](//github.com/kalisjoshua)
+  - http://twitter.com/kalisjoshua
+  - http://github.com/kalisjoshua
+
+---
 
 ### Resources
 
