@@ -71,6 +71,10 @@ pre {
   display: none;
 }
 
+table {
+  margin: 0 auto;
+}
+
 table th,
 table td {
   border: 1px solid #DDDDDD;

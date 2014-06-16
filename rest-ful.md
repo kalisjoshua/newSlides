@@ -13,6 +13,10 @@ Relax. You can do it.
 
 ---
 
+![Gasp](http://fc00.deviantart.net/fs70/i/2012/042/f/a/gasp_base_by_yumi_and_zb-d4pfzjl.png)
+
+---
+
 # But That's OK.
 
 We're all in the same boat, so you're not alone.
@@ -49,10 +53,27 @@ Here's what we are gonna cover.
 
 ---
 
+## What REST is not?
+
+  - Mapping DB tables to URIs
+  - URIs without file extensions
+    + /index vs. /index.html
+  - SEO-friendly URIs
+    + /user-settings
+    + /User/Settings
+  - Task-based URIs responding only to POST
+    + /SaveUserData
+    + /GetUserData
+    + /UpdateUserData
+    + /DeleteUserData
+  - Much more...
+
+---
+
 ## What is REST?
 
-  - **REST** - REpresentation State Transfer
-  - An architectural style
+  - An architectural style - a set of architectural constraints
+  - **REST** - REpresentational State Transfer
   - REST is not HTTP, but HTTP does exhibit REST
 
 
@@ -60,17 +81,40 @@ Here's what we are gonna cover.
 
 ---
 
-## What REST is not?
+## Architectural Constraints
 
-  - URIs without file extensions
-    + http://example.com/index vs. http://example.com/index.html
-  - SEO-friendly URIs
-    + http://example.com/user-settings vs. http://example.com/User/Settings
-  - Task-based URIs responding only to POST
-    + http://example.com/GetUserData
-    + http://example.com/SaveUserData
-    + http://example.com/UpdateUserData
-  - Much more...
+  1. Client-Server
+  2. Stateless
+  3. Cache (cacheable)
+  4. Uniform Interface
+    + Resources
+    + Representations
+    + Messages
+    + Hypermedia
+  5. Layered System
+  6. Code On-demand [optional]
+
+---
+
+# Congratulations
+
+Do these things and you are RESTful.
+
+*Missing any of them, however, means you are not.*
+
+---
+
+# UnRESTful
+
+Which is totally fine; just don't call it REST.
+
+---
+
+# Resources + Representations
+
+## ... will guide you towards REST
+
+*My personal belief.*
 
 ---
 
@@ -88,116 +132,22 @@ The swamp of POX - Plain 'ole XML
 
 ---
 
-# REST === HyperMedia
-
-REST is supposed to mean HyperMedia.
-
----
-
-# But...
-
-REST has been done wrong for so long now that it has come to mean something different.
-
----
-
-# HyperMedia is Hard(er).
-
-Think application state; not resources.
-
----
-
-# Lets focus on RRREST
-
-*Realized Resource* REpresentation State Transfer
-
----
-
-![](http://www.qasinternational.com.au/wp-content/uploads/2013/09/pirate2.jpg)
-
----
-
-# Yes...
-
-I made that up.
-
----
-
-## What do you mean by *Realized*?
-
-  - Realized
-  - Realistic
-  - Reasonably-simple
-  - Rational
-  - Radical
-  - Ratified
-
-By 'realized' I mean what most people acually do, or work towards as an ideal.
-
----
-
-# RRRRRRRRRRRRRRREST
-
----
-
-![](http://www.delish.com/cm/delish/images/FY/frosted-flakes-tony-tiger-del0311-lg.jpg)
-
----
-
-# A Rose by Another Name
-
-## Pragmatic REST
-
----
-
-## Sample
-
-A mythical API provides the Resource endpoint:
-
-````
-http://example.com/people/:id
-````
-
-### Request
-
-````
-GET /people/kalisjoshua HTTP/1.1
-<headers>
-````
-
-### Response
-
-````
-HTTP/1.1 200 OK
-<headers>
-
-{
-  "name": "Joshua T Kalis",
-  "socks": "colorful"
-}
-````
-
----
-
-## Some Basics - URIs
+## Some Basics - URLs
 
 ````
 <scheme>://<host>:<port>/<path>?<search>#<fragment>
 ````
 
-**http://example.com:80/path-to/resource?filter=active#anchor**
-
 ### Breakdown
 
-URI piece | value
+URL piece | value
 --------- | -----
 scheme    | http or [https, ftp, etc.]
 port      | 80 (80 is default; assumed if nothing is provided)
 host      | example.com
 path      | /path-to/resource
 search    | ?filter=active
-fragment  | #anchor - references an [id, name] in the page*
-
-\* *Generally used by the browser to scroll to that element as a accessibility feature.*
+fragment  | #anchor - references an [id, name] in the page
 
 ---
 
@@ -210,15 +160,18 @@ fragment  | #anchor - references an [id, name] in the page*
   - The `path` should identify a resource
     + A collection of objects
     + A single object with a unique identity
-  - The `query` should filter or refine what is addressed by the `path`
+  - The `search` should filter or refine what is addressed by the `path`
     + Filtering a list of object based on a criteria
     + Returning only a subset of properties on a resource
 
-RESTful HTTP APIs will be concerned with the `path` and `query` portions of the URI.
+RESTful HTTP APIs will be concerned with the `path` and `search` portions of the URI.
 
 ---
 
 ## HTTP Verbs
+
+  - **Idempotent** - repeating a request will not continually change the system
+  - **Side-effects** - changes will occur as a result of the request
 
 Verb    | Action | Idempotent | Side-effects
 ------- | ------ | ---------- | ------------
@@ -230,20 +183,15 @@ OPTION* |||
 HEAD*   |||
 PATCH*  |||
 
-  - **Idempotent** - repeating a request will not continually change the system
-  - **Side-effects** - changes will occur as a result of the request
-
 \* *Left as an exercise for the brave and over-achieving.*
 
 ---
 
-# Examples Time
+# Example Time
 
 ---
 
 ## BAD Examples
-
-Don't do the following:
 
   1. `/v3/json/GetUser/1234` or `/v3/GetUser/1234.json`
     + Don't put the media type in the URI; put it in the request (accept) headers
@@ -257,7 +205,7 @@ Don't do the following:
 
 ---
 
-# Do You Want To Design A Good API?
+# You Want To Design A Good API?
 
 ---
 
@@ -268,7 +216,7 @@ Don't do the following:
 ## Do These Things First
 
   1. Evaluate business process*
-  2. Identify objects (Resource) that need be represented in the API
+  2. Identify objects (Resources) that need be represented in the API
   3. Define Verbs for each Resource
 
 \* *We are not going to cover this here.*
@@ -276,6 +224,8 @@ Don't do the following:
 ---
 
 ## Plan
+
+A sample API plan for some pets.
 
 Resource   | POST   | GET    | PUT    | DELETE
 ---------- | ------ | ------ | ------ | ------
@@ -354,6 +304,7 @@ Dogs.post({/* data */}, function (err, result) {
 
   - Be part of a community
   - Help others; outside your immediate team
+    + Learn from people using your API
   - Get help from others; outside your immediate team
   - Benefit from the mistakes of other people; stand on the shoulders of giants
 
@@ -390,6 +341,7 @@ All of the above are achievable with REST if employed correctly and consistently
 
 ### Resources
 
+  - http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm
   - http://en.wikipedia.org/wiki/Representational_state_transfer
   - http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http
   - http://nicksda.apotomo.de/2010/10/rails-misapprehensions-crud-is-not-rest

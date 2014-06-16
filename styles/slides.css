@@ -39,3 +39,13 @@ pre code {
   margin: 0 auto;
   text-align: center;
 }
+
+.slide--title h1 + h2 {
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
+.slide--title h1 + p {
+  margin-left: 8em;
+  margin-right: 8em;
+}
