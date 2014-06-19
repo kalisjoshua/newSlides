@@ -39,7 +39,7 @@ Promise.
 
 ---
 
-## Adjenda
+## Agenda
 
 Here's what we are gonna cover.
 
