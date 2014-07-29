@@ -1,7 +1,8 @@
 (function () {
   var currentSlide,
       slideClasses,
-      slideCount;
+      slideCount,
+      slidesLoaded;
 
   slideClasses = {
     'h1': 'slide--title',
@@ -14,9 +15,14 @@
     deck = document.location.search
       .match(/^\?doc=(.*?)\/?$/)[1];
 
-    $.get(deck + '.md', function (data) {
-      renderSlides(data)
-    });
+    $.when($.get(deck + '.md'))
+      .done(renderSlides)
+      .fail(function () {
+        alert('Sorry, that slide deck was not found.');
+      });
+    //$.get(deck + '.md', function (data) {
+    //  renderSlides(data)
+    //});
   }
 
   function navigate(change, event) {
@@ -38,6 +44,8 @@
 
   function renderSlides(src) {
     var slideTemplate;
+
+    slidesLoaded = true;
 
     slideTemplate = $('<section><article></article><footer></footer></section>');
 
@@ -98,6 +106,10 @@
 
   $(document)
     .on('keydown', function (event) {
+      if (!slidesLoaded) {
+        return;
+      }
+
       var delta,
           moveLR,
           moveUD;
