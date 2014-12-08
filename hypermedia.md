@@ -5,6 +5,12 @@ What is Hypermedia?
 
 ## That's a good question...
 
+<!--
+notes:
+  Isn't it usually the case that when this statement is uttered, the person who
+  delivered it doesn't have an answer?
+-->
+
 ---
 
 # What is Hypermedia?
@@ -26,11 +32,31 @@ What is Hypermedia?
 
 ---
 
+![Forest Gump](http://cdn.hitfix.com/photos/5632692/ForrestGumpTomHanksLSParamount_article_story_large.jpg)
+
+---
+
 ## Let's Gump It
 
 ---
 
 # Hypermedia means... links.
+
+<!--
+notes:
+    + at the very least, Hypermedia include links
+    + information coded into the API responses is not necessarily coded into the
+    consuming application or developer's head
+-->
+
+---
+
+![Ziggy, gone too far.](http://4.bp.blogspot.com/-TJJ5v6FhNQs/UACVuAFBnqI/AAAAAAAAAOk/MVFkfyXMOVg/s1600/too_far.gif)
+
+<!--
+image:
+  http://sd.keepcalm-o-matic.co.uk/i/this-shit-has-gone-too-far.png
+-->
 
 ---
 
@@ -63,7 +89,15 @@ lazy and not know all of your API to use a small part of it.
 
 ---
 
+![Morpheus, show me.](http://www.quickmeme.com/img/43/438131590659e6b65931a2c3c65df7fb16804809a9ef178950785b53a707b47d.jpg)
+
+---
+
 ## Example Time
+
+---
+
+![Read the fine print.](http://imgace.com/wp-content/uploads/2013/07/the-naked-truth-about-our-waitresses-at-odonovans.jpg)
 
 ---
 

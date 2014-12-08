@@ -1,10 +1,9 @@
-
 * {
   box-sizing: border-box;
 }
 
 a {
-  color: maroon;
+  color: #5EAD06;
 }
 
 a:hover {
@@ -22,6 +21,12 @@ footer:before {
   content: "Slide ";
 }
 
+h1,
+h2 {
+  color: #0B5E55;
+  font-family: Georgia, Times, serif;
+}
+
 h1 + h2 {
   font-weight: 100;
 }
@@ -33,15 +38,108 @@ html, body {
   max-width: 60em;
 }
 
-html {
+html:before,
+html:after,
+body:before,
+body:after {
+  background: -webkit-linear-gradient(left,
+  #0b5e55 0%,
+  #0b5e55 20%,
+  #5EAD06 20%,
+  #5EAD06 40%,
+  #0b5e55 40%,
+  #0b5e55 60%,
+  #5EAD06 60%,
+  #5EAD06 80%,
+  #0b5e55 80%,
+  #0b5e55 100%
+  );
+  background: -moz-linear-gradient(left,
+  #0b5e55 0%,
+  #0b5e55 20%,
+  #5EAD06 20%,
+  #5EAD06 40%,
+  #0b5e55 40%,
+  #0b5e55 60%,
+  #5EAD06 60%,
+  #5EAD06 80%,
+  #0b5e55 80%,
+  #0b5e55 100%
+  );
+  background: -o-linear-gradient(left,
+  #0b5e55 0%,
+  #0b5e55 20%,
+  #5EAD06 20%,
+  #5EAD06 40%,
+  #0b5e55 40%,
+  #0b5e55 60%,
+  #5EAD06 60%,
+  #5EAD06 80%,
+  #0b5e55 80%,
+  #0b5e55 100%
+  );
+  background: -ms-linear-gradient(left,
+  #0b5e55 0%,
+  #0b5e55 20%,
+  #5EAD06 20%,
+  #5EAD06 40%,
+  #0b5e55 40%,
+  #0b5e55 60%,
+  #5EAD06 60%,
+  #5EAD06 80%,
+  #0b5e55 80%,
+  #0b5e55 100%
+  );
+  background: linear-gradient(to right,
+  #0b5e55 0%,
+  #0b5e55 20%,
+  #5EAD06 20%,
+  #5EAD06 40%,
+  #0b5e55 40%,
+  #0b5e55 60%,
+  #5EAD06 60%,
+  #5EAD06 80%,
+  #0b5e55 80%,
+  #0b5e55 100%
+  );
+}
+
+body:before {
+  bottom: 3em;
+  content: " ";
+  height: 7px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
+
+body:after {
+  background: transparent;
+  bottom: 0;
+  content: "Joshua T Kalis";
+  left: 0;
+  padding: 1em;
+  position: fixed;
+  width: 100%;
+}
+
+html:after {
+  content: " ";
+  height: 7px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 img {
+  border: 10px solid #0B5E55;
   max-height: 90%;
   max-width: 90%;
 }
 
 section {
+  border-top: 2px solid gainsboro;
   height: 100%;
   overflow: scroll;
   position: relative;

@@ -20,9 +20,6 @@
       .fail(function () {
         alert('Sorry, that slide deck was not found.');
       });
-    //$.get(deck + '.md', function (data) {
-    //  renderSlides(data)
-    //});
   }
 
   function navigate(change, event) {
@@ -83,10 +80,10 @@
 
     Prism.highlightAll();
 
-    $(document.body)
+    $('html, body')
       .animate({
         'scrollTop': $(window.location.hash || '#0').offset().top
-      }, 100);
+      }, 20);
   }
 
   function slideClassLookup(slide) {
