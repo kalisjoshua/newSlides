@@ -36,10 +36,6 @@ notes:
 
 ---
 
-## Let's Gump It
-
----
-
 # Hypermedia means... links.
 
 <!--
@@ -57,12 +53,6 @@ notes:
 image:
   http://sd.keepcalm-o-matic.co.uk/i/this-shit-has-gone-too-far.png
 -->
-
----
-
-# Too Gump?
-
-Perhaps an oversimplification?
 
 ---
 
@@ -90,10 +80,6 @@ lazy and not know all of your API to use a small part of it.
 ---
 
 ![Morpheus, show me.](http://www.quickmeme.com/img/43/438131590659e6b65931a2c3c65df7fb16804809a9ef178950785b53a707b47d.jpg)
-
----
-
-## Example Time
 
 ---
 
