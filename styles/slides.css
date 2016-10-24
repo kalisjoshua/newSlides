@@ -15,6 +15,10 @@ blockquote p {
   padding: 0;
 }
 
+ol {
+  text-align: left;
+}
+
 code,
 pre {
   background: gainsboro;
@@ -57,6 +61,6 @@ pre code {
 }
 
 .slide--title h1 + p {
-  margin-left: 8em;
-  margin-right: 8em;
+  margin-left: 3em;
+  margin-right: 3em;
 }
