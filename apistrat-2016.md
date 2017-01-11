@@ -78,7 +78,7 @@ Keep in mind the larger picture; don't get lost in the details.
   - How will the API fit into the existing ecosystem?
   - How will the ecosystem respond to an additional API?
   - Who will maintain the higher view and who will dive into the minutiae?
-  - How will new APIs effect SLAs?
+  - How will new APIs affect SLAs?
 
 ---
 
