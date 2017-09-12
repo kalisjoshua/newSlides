@@ -261,7 +261,7 @@ Resource   | POST   | GET    | PUT    | DELETE
 ````javascript
 angular.module('app')
   .service('API', function ($resource) {
-    
+
     return {
         Dogs: $resoure('/dogs')
       };
