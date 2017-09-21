@@ -15,7 +15,7 @@ blockquote p {
   padding: 0;
 }
 
-ol {
+ol, ul {
   text-align: left;
 }
 
@@ -34,9 +34,17 @@ pre {
   font-weight: 100;
 }
 
+pre {
+  max-height: 30em;
+}
+
 pre code {
   background: transparent;
   border: 0;
+}
+
+pre code:hover {
+  pointer-event: none;
 }
 
 .slide--title {

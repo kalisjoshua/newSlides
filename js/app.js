@@ -86,6 +86,34 @@
       }, 20);
   }
 
+  function scrollingElement(ev) {
+    console.log('scrolling element')
+    var $this = $(this),
+        scrollTop = this.scrollTop,
+        scrollHeight = this.scrollHeight,
+        height = $this.height(),
+        delta = (ev.type == 'DOMMouseScroll' ?
+          ev.originalEvent.detail * -40 :
+          ev.originalEvent.wheelDelta),
+        up = delta > 0;
+
+    function prevent(top) {
+      $this.scrollTop(top);
+      ev.stopPropagation();
+      ev.preventDefault();
+      ev.returnValue = false;
+      return false;
+    }
+
+    if (!up && -delta > scrollHeight - height - scrollTop) {
+      // Scrolling down, but this will take us past the bottom.
+      return prevent(scrollHeight);
+    } else if (up && delta > scrollTop) {
+      // Scrolling up, but this will take us past the top.
+      return prevent(0);
+    }
+  }
+
   function slideClassLookup(slide) {
     var children,
         title;
@@ -93,7 +121,7 @@
     children = slide
       .children('article')
       .children();
-      
+
     title = children[0]
       .nodeName
       .toLowerCase();
@@ -102,6 +130,7 @@
   }
 
   $(document)
+    .on('DOMMouseScroll mousewheel', 'pre', scrollingElement)
     .on('keydown', function (event) {
       if (!slidesLoaded) {
         return;
