@@ -448,7 +448,7 @@ provider and client.
 
 ---
 
-## Book - Siren Collection Representation - `properties`
+## Books - Siren Collection Representation - `properties`
 
 The *properties* of a resource reflect the unique attributes of the
 Collection and nothing outside of itself; the Entities are resources unto
@@ -472,7 +472,7 @@ level of understanding of the collection.
 
 ---
 
-## Book - Siren Collection Representation - `links`
+## Books - Siren Collection Representation - `links`
 
 The `links` for a collection will often include navigational links that can be
 followed for traversing long lists of resources. Again, links are provided with
@@ -504,7 +504,7 @@ client logic simpler and less coupled to the API.
 
 ---
 
-## Book - Siren Collection Representation - `entities`
+## Books - Siren Collection Representation - `entities`
 
 Entity representations, when included within the Collection, are necessarily
 different than when on their own because at the level of the collection less
@@ -526,7 +526,7 @@ listing all comprised Entities.
 
 ---
 
-## Book - Siren Collection Representation - `actions`
+## Books - Siren Collection Representation - `actions`
 
 The availability of an action in a resource representation is indication that
 the client has access to execute the action; there is no need to provide a
@@ -575,7 +575,7 @@ definition for an action to a client that can not perform the action.
 
 ---
 
-## Book - Siren Collection Representation - full
+## Books - Siren Collection Representation - full
 
 ```JSON
 {
